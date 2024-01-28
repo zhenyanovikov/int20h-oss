@@ -1,0 +1,86 @@
+{
+  "page": {
+    "notFound": {
+      "title": "Oops! Page Not Found",
+      "subtitle": "It seems like you've taken a wrong turn. The page you're looking for might have been moved or doesn't exist.",
+      "image": {
+        "technyLettering": "Techny lettering error 404 with warning sign and wrench text"
+      },
+      "button": {
+        "backToHome": "Back to Home"
+      }
+    },
+    "error": {
+      "title": "Uh-Oh! Something Went Wrong",
+      "subtitle": "We're sorry, but an unexpected error occurred. Our team has been notified, and we're working to fix it as soon as possible. Please try again later.",
+      "image": {
+        "technyWarning": "Techny warning icon"
+      },
+      "button": {
+        "returnToPreviousPage": "Return to Previous Page"
+      }
+    }
+  },
+  "template": {
+    "home": {
+      "title": "Hackathon Hero Toolkit",
+      "subtitle": "Empowering innovation with a comprehensive codebase for rapid development",
+      "image": {
+        "technyFrames": "Techny frames with media content 1"
+      }
+    }
+  },
+  "organism": {
+    "reactQuerySection": {
+      "title": "React Query"
+    },
+    "reactRouterSection": {
+      "title": "React Router",
+      "text": {
+        "link": "Link"
+      }
+    },
+    "formikAndYupSection": {
+      "title": "Formik and Yup",
+      "form": {
+        "email": {
+          "label": "Email",
+          "helperText": "Enter your email",
+          "invalidHelperText": "Enter a valid email address",
+          "requiredHelperText": "Email is required"
+        },
+        "password": {
+          "label": "Password",
+          "helperText": "Enter your password",
+          "invalidHelperText": "Password should be of minimum 8 characters length",
+          "requiredHelperText": "Password is required"
+        },
+        "button": {
+          "submit": "Submit"
+        }
+      }
+    },
+    "reactErrorBoundarySection": {
+      "title": "React Error Boundary",
+      "button": {
+        "error": "Error"
+      }
+    },
+    "muiPalleteModeSection": {
+      "title": "MUI Pallete Mode",
+      "button": {
+        "toggle": "Toggle"
+      }
+    },
+    "i18nextSection": {
+      "title": "i18next",
+      "select": {
+        "localeLabel": "Locale",
+        "localeItems": {
+          "English": "English",
+          "Ukrainian": "Українська"
+        }
+      }
+    }
+  }
+}
