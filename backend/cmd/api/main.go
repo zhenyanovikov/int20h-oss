@@ -1,20 +1,15 @@
 package main
 
 import (
-	"context"
 	"log/slog"
 	"os"
 
 	"oss-backend/internal/bootstrap"
 	"oss-backend/internal/config"
-	"oss-backend/internal/service/logger"
+	"oss-backend/internal/logger"
 )
 
 func main() {
-	ctx := context.Background()
-
-	_ = ctx
-
 	deps, err := bootstrap.Up()
 	if err != nil {
 		panic(err)

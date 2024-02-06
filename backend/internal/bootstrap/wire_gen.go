@@ -8,7 +8,10 @@ package bootstrap
 
 import (
 	"oss-backend/internal/config"
+	"oss-backend/internal/persistence/postgres"
+	"oss-backend/internal/service/auth"
 	"oss-backend/internal/service/httpserver"
+	"oss-backend/internal/service/user"
 )
 
 // Injectors from wire.go:
@@ -18,8 +21,12 @@ func Up() (*Dependencies, error) {
 	if err != nil {
 		return nil, err
 	}
-	httpServer := httpserver.New(configConfig)
-	dependencies := NewDependencies(configConfig, httpServer)
+	configPostgres := getPostgresConfig(configConfig)
+	postgresPostgres := postgres.New(configPostgres)
+	service := auth.New(configConfig, postgresPostgres, postgresPostgres)
+	userService := user.New()
+	httpServer := httpserver.New(configConfig, service, userService)
+	dependencies := NewDependencies(configConfig, httpServer, service, userService, postgresPostgres, postgresPostgres)
 	return dependencies, nil
 }
 

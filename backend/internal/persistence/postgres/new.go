@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
 
 	"github.com/uptrace/bun"
@@ -28,4 +29,11 @@ func New(cfg config.Postgres) *Postgres {
 	return &Postgres{
 		db: db,
 	}
+}
+
+func (p *Postgres) err(err error) error {
+	if errors.Is(err, sql.ErrNoRows) {
+		return nil
+	}
+	return err
 }

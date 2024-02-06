@@ -2,17 +2,32 @@ package httpserver
 
 import (
 	"github.com/gorilla/mux"
+	"golang.org/x/oauth2"
+	"golang.org/x/oauth2/google"
 	"oss-backend/internal/config"
+	"oss-backend/internal/service"
 )
 
 type HTTPServer struct {
-	cfg    config.Config
-	router *mux.Router
+	cfg            config.Config
+	router         *mux.Router
+	googleOAuthCfg *oauth2.Config
+	authSrv        service.Auth
+	userSrv        service.User
 }
 
-func New(cfg config.Config) *HTTPServer {
+func New(cfg config.Config, authSrv service.Auth, userSrv service.User) *HTTPServer {
 	server := &HTTPServer{
-		cfg: cfg,
+		cfg:     cfg,
+		authSrv: authSrv,
+		userSrv: userSrv,
+		googleOAuthCfg: &oauth2.Config{
+			RedirectURL:  cfg.Oauth.Google.RedirectURL,
+			ClientID:     cfg.Oauth.Google.ClientID,
+			ClientSecret: cfg.Oauth.Google.ClientSecret,
+			Scopes:       cfg.Oauth.Google.Scopes,
+			Endpoint:     google.Endpoint,
+		},
 	}
 
 	server.router = server.newRouter(cfg)

@@ -17,10 +17,23 @@ var (
 const configFilename = "config.json"
 
 type Config struct {
-	Address  string   `json:"address" default:":8080"`
-	Postgres Postgres `json:"postgres"`
-	Redis    Redis    `json:"redis"`
-	Log      Logger   `json:"logger"`
+	Address   string   `json:"address" default:":8080"`
+	JwtSecret string   `json:"jwt_secret" default:"my-totally-secret-key"`
+	Oauth     Oauth    `json:"oauth"`
+	Postgres  Postgres `json:"postgres"`
+	Redis     Redis    `json:"redis"`
+	Log       Logger   `json:"logger"`
+}
+
+type Oauth struct {
+	Google Google `json:"google"`
+}
+
+type Google struct {
+	ClientID     string   `json:"client_id"`
+	ClientSecret string   `json:"client_secret"`
+	RedirectURL  string   `json:"redirect_url" default:"http://localhost:8080/api/v1/auth/google/callback"`
+	Scopes       []string `json:"scopes" default:"https://www.googleapis.com/auth/userinfo.profile,https://www.googleapis.com/auth/userinfo.email"`
 }
 
 type Postgres struct {

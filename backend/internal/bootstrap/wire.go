@@ -6,21 +6,29 @@ package bootstrap
 import (
 	"github.com/google/wire"
 	"oss-backend/internal/config"
+	"oss-backend/internal/persistence"
+	"oss-backend/internal/persistence/postgres"
+	"oss-backend/internal/service"
+	"oss-backend/internal/service/auth"
 	"oss-backend/internal/service/httpserver"
+	"oss-backend/internal/service/user"
 )
 
 func Up() (*Dependencies, error) {
 	wire.Build(
-		//wire.Bind(new(services.Project), new(*project.Service)),
-
-		//wire.Bind(new(persistence.VectorStore), new(*postgres.Postgres)),
+		wire.Bind(new(service.User), new(*user.Service)),
+		wire.Bind(new(service.Auth), new(*auth.Service)),
+		wire.Bind(new(persistence.Auth), new(*postgres.Postgres)),
+		wire.Bind(new(persistence.User), new(*postgres.Postgres)),
 		//wire.Bind(new(persistence.Cache), new(*redis.Redis)),
 
 		config.New,
 		httpserver.New,
-		//getPostgresConfig,
+		getPostgresConfig,
 
-		//postgres.New,
+		postgres.New,
+		auth.New,
+		user.New,
 		//redis.New,
 		NewDependencies,
 	)
