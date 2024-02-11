@@ -20,7 +20,7 @@ type Auction struct {
 	Status      string    `json:"status"`
 	CreatedAt   time.Time `json:"createdAt"`
 	EndedAt     time.Time `json:"endedAt,omitempty"`
-	Owner       *User     `json:"owner,omitempty" bun:"rel:has-one"`
+	Owner       *User     `json:"owner,omitempty" bun:"rel:belongs-to"`
 	Winner      *User     `json:"winner,omitempty" bun:"rel:belongs-to"`
 	StartingBid *Bid      `json:"startingBid" bun:"rel:has-one,join:starting_bid_id=id"`
 	WinningBid  *Bid      `json:"winningBid,omitempty" bun:"rel:has-one,join:winning_bid_id=id"`
