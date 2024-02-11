@@ -5,23 +5,27 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/markbates/goth/gothic"
 	"oss-backend/internal/models"
 )
 
 func (s *HTTPServer) oauthCallback(w http.ResponseWriter, r *http.Request) {
-	gothicUser, err := gothic.CompleteUserAuth(w, r)
+	exchange, err := s.googleOAuthCfg.Exchange(context.Background(), r.URL.Query().Get("code"))
 	if err != nil {
-		s.error(w, http.StatusInternalServerError, fmt.Errorf("complete oauth: %w", err))
+		s.error(w, http.StatusInternalServerError, fmt.Errorf("exchange: %w", err))
 		return
 	}
 
-	// save user
+	gUser, err := fetchGoogleUser(exchange.AccessToken)
+	if err != nil {
+		s.error(w, http.StatusInternalServerError, fmt.Errorf("login: %w", err))
+		return
+	}
+
 	user := models.User{
-		FirstName: gothicUser.FirstName,
-		LastName:  gothicUser.LastName,
-		Email:     gothicUser.Email,
-		AvatarURL: gothicUser.AvatarURL,
+		FirstName: gUser.FirstName,
+		LastName:  gUser.LastName,
+		Email:     gUser.Email,
+		AvatarURL: gUser.Picture,
 	}
 
 	res, err := s.authSrv.GetCredentials(context.Background(), &user)

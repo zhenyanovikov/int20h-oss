@@ -5,7 +5,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/markbates/goth"
-	"github.com/markbates/goth/gothic"
 	"github.com/markbates/goth/providers/google"
 	"oss-backend/internal/config"
 )
@@ -24,7 +23,6 @@ func (s *HTTPServer) newRouter(_ config.Config) *mux.Router {
 	protected := api.PathPrefix("/").Subrouter()
 	protected.Use(s.authMiddleware)
 
-	api.HandleFunc("/auth/{provider}/login", gothic.BeginAuthHandler).Methods(http.MethodGet, http.MethodOptions)
 	api.HandleFunc("/auth/{provider}/callback", s.oauthCallback).Methods(http.MethodGet, http.MethodOptions)
 
 	api.HandleFunc("/status", s.statusHandler).Methods(http.MethodGet, http.MethodOptions)

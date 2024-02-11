@@ -32,7 +32,7 @@ type Oauth struct {
 type Google struct {
 	ClientID     string   `json:"client_id"`
 	ClientSecret string   `json:"client_secret"`
-	RedirectURL  string   `json:"redirect_url" default:"http://localhost:8080/api/v1/auth/google/callback"`
+	RedirectURL  string   `json:"redirect_url" default:"http://localhost:8080/api/v1/test"`
 	Scopes       []string `json:"scopes" default:"https://www.googleapis.com/auth/userinfo.profile,https://www.googleapis.com/auth/userinfo.email"`
 }
 
