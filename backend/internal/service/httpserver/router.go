@@ -17,7 +17,7 @@ func (s *HTTPServer) newRouter(_ config.Config) *mux.Router {
 		google.New(s.googleOAuthCfg.ClientID, s.googleOAuthCfg.ClientSecret, s.googleOAuthCfg.RedirectURL, s.googleOAuthCfg.Scopes...),
 	)
 
-	router.Use(mux.CORSMethodMiddleware(router))
+	router.Use(corsMiddleware)
 
 	api := router.PathPrefix("/api/v1").Subrouter()
 
@@ -31,6 +31,21 @@ func (s *HTTPServer) newRouter(_ config.Config) *mux.Router {
 	protected.HandleFunc("/status-auth", s.statusHandler).Methods(http.MethodGet, http.MethodOptions)
 
 	return router
+}
+
+func corsMiddleware(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
+
+		if req.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		handler.ServeHTTP(w, req)
+	})
 }
 
 func (s *HTTPServer) Start() error {
