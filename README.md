@@ -1,8 +1,8 @@
 # Bla-GO
+Demo: https://blago.yevhenii.live/
 
 ## Description
 Bla-GO – платформа для створення благодійних онлайн аукціонів.
-
 
 ## Installation
 1. Склонуйте репозиторій (`git clone`)
