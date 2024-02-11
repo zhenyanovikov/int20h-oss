@@ -22,10 +22,14 @@ type Auction interface {
 	GetAll(ctx context.Context) ([]*models.Auction, error)
 	GetByID(ctx context.Context, id uuid.UUID) (*models.Auction, error)
 	GetByUserID(ctx context.Context, userID uuid.UUID) ([]*models.Auction, error)
+	GetBidHistory(ctx context.Context, auctionID uuid.UUID) ([]models.Bid, error)
+
 	CreateAuction(ctx context.Context, auction *models.Auction) error
-	UpdateAuction(ctx context.Context, auction *models.Auction) error
-	DeleteAuction(ctx context.Context, id uuid.UUID) error
 	CreateBid(ctx context.Context, bid *models.Bid) error
+
+	UpdateAuction(ctx context.Context, auction *models.Auction) error
+
+	DeleteAuction(ctx context.Context, id uuid.UUID) error
 }
 
 type Media interface {

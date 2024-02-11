@@ -99,26 +99,3 @@ func (s *HTTPServer) deleteAuction(w http.ResponseWriter, r *http.Request) {
 
 	s.respond(w, http.StatusNoContent, nil)
 }
-
-func (s *HTTPServer) placeAuctionBid(w http.ResponseWriter, r *http.Request) {
-	auctionID, err := uuid.Parse(mux.Vars(r)["id"])
-	if err != nil {
-		s.respondError(w, http.StatusBadRequest, err)
-		return
-	}
-
-	var bid models.Bid
-	if err = json.NewDecoder(r.Body).Decode(&bid); err != nil {
-		s.respondError(w, http.StatusBadRequest, err)
-		return
-	}
-
-	bid.AuctionID = auctionID
-
-	if err = s.auctionSrv.CreateBid(r.Context(), &bid); err != nil {
-		s.respondError(w, http.StatusInternalServerError, err)
-		return
-	}
-
-	s.respond(w, http.StatusCreated, bid)
-}

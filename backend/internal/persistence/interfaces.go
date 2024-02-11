@@ -23,9 +23,12 @@ type Auction interface {
 	GetAllAuctions(ctx context.Context) ([]*models.Auction, error)
 	GetAuctionByID(ctx context.Context, id uuid.UUID) (*models.Auction, error)
 	GetAuctionsByUserID(ctx context.Context, userID uuid.UUID) ([]*models.Auction, error)
-	CreateAuction(ctx context.Context, auction *models.Auction) error
-	UpdateAuction(ctx context.Context, auction *models.Auction) error
-	DeleteAuction(ctx context.Context, id uuid.UUID) error
+	GetBidHistory(ctx context.Context, auctionID uuid.UUID) ([]models.Bid, error)
 
+	CreateAuction(ctx context.Context, auction *models.Auction) error
 	CreateBid(ctx context.Context, bid *models.Bid) error
+
+	UpdateAuction(ctx context.Context, auction *models.Auction) error
+
+	DeleteAuction(ctx context.Context, id uuid.UUID) error
 }

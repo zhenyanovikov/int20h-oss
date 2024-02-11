@@ -33,6 +33,7 @@ func (s *HTTPServer) newRouter(_ config.Config) *mux.Router {
 	protected.HandleFunc("/auctions/{id}", s.getAuction).Methods(http.MethodGet, http.MethodOptions)
 	protected.HandleFunc("/auctions/{id}", s.updateAuction).Methods(http.MethodPut, http.MethodOptions)
 	protected.HandleFunc("/auctions/{id}", s.deleteAuction).Methods(http.MethodDelete, http.MethodOptions)
+	protected.HandleFunc("/auctions/{id}/bid", s.getAuctionBids).Methods(http.MethodGet, http.MethodOptions)
 	protected.HandleFunc("/auctions/{id}/bid", s.placeAuctionBid).Methods(http.MethodPost, http.MethodOptions)
 
 	protected.HandleFunc("/media/upload", s.uploadMedia).Methods(http.MethodPost, http.MethodOptions)

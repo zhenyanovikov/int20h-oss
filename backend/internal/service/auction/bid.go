@@ -8,6 +8,10 @@ import (
 	"oss-backend/internal/models"
 )
 
+func (s Service) GetBidHistory(ctx context.Context, auctionID uuid.UUID) ([]models.Bid, error) {
+	return s.auctionRepo.GetBidHistory(ctx, auctionID)
+}
+
 func (s Service) CreateBid(ctx context.Context, bid *models.Bid) error {
 	bid.UserID = ctx.Value("user_id").(uuid.UUID)
 	bid.CreatedAt = time.Now()

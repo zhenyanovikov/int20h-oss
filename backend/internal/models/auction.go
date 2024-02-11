@@ -36,6 +36,6 @@ type Bid struct {
 	AuctionID uuid.UUID `json:"-"`
 	Amount    int       `json:"amount"`
 	User      *User     `json:"bidder,omitempty" bun:"rel:belongs-to"`
-	CreatedAt time.Time `json:"date" bun:",scanonly"`
+	CreatedAt time.Time `json:"date" bun:"created_at"`
 	UserID    uuid.UUID `json:"-"`
 }
