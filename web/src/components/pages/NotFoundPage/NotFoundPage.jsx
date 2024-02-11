@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Box } from "@mui/material";
-import { ROUTE } from "../../../constants/router";
 import LetteringTemplate from "../../templates/LetteringTemplate/LetteringTemplate";
-import TechnyLetteringIllustration from "../../../assets/illustrations/techny-lettering-error-404-with-warning-sign-and-wrench-text.png";
+import Lettering404Illustration from "../../../assets/illustrations/techny-lettering-four-hundred-four-text.png";
 
 function NotFoundPage() {
   const { t } = useTranslation();
@@ -20,14 +19,14 @@ function NotFoundPage() {
               md: "240px",
             },
           }}
-          alt={t("page.notFound.image.technyLettering")}
-          src={TechnyLetteringIllustration}
+          alt={t("pages.notFound.image.technyLettering")}
+          src={Lettering404Illustration}
         />
       }
-      title={t("page.notFound.title")}
-      subtitle={t("page.notFound.subtitle")}
-      buttonLabel={t("page.notFound.button.backToHome")}
-      onButtonClick={() => navigate(ROUTE.HOME)}
+      title={t("pages.notFound.title")}
+      subtitle={t("pages.notFound.subtitle")}
+      buttonLabel={t("pages.notFound.button.backToMain")}
+      onButtonClick={() => navigate("/")}
     />
   );
 }

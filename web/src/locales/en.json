@@ -1,86 +1,204 @@
 {
-  "page": {
-    "notFound": {
-      "title": "Oops! Page Not Found",
-      "subtitle": "It seems like you've taken a wrong turn. The page you're looking for might have been moved or doesn't exist.",
-      "image": {
-        "technyLettering": "Techny lettering error 404 with warning sign and wrench text"
-      },
-      "button": {
-        "backToHome": "Back to Home"
-      }
-    },
-    "error": {
-      "title": "Uh-Oh! Something Went Wrong",
-      "subtitle": "We're sorry, but an unexpected error occurred. Our team has been notified, and we're working to fix it as soon as possible. Please try again later.",
-      "image": {
-        "technyWarning": "Techny warning icon"
-      },
-      "button": {
-        "returnToPreviousPage": "Return to Previous Page"
+  "constants": {
+    "auctionStatus": {
+      "label": {
+        "active": "Active",
+        "completed": "Completed",
+        "pending": "Expected"
       }
     }
   },
-  "template": {
-    "home": {
-      "title": "Hackathon Hero Toolkit",
-      "subtitle": "Empowering innovation with a comprehensive codebase for rapid development",
+  "molecules": {
+    "auction": {
       "image": {
-        "technyFrames": "Techny frames with media content 1"
+        "auctionPreviewImage": "Auction preview image"
       }
-    }
-  },
-  "organism": {
-    "reactQuerySection": {
-      "title": "React Query"
     },
-    "reactRouterSection": {
-      "title": "React Router",
+    "createAuctionButton": {
+      "button": {
+        "create": "Create an auction"
+      }
+    },
+    "empty": {
+      "image": {
+        "empty": "It's empty"
+      },
       "text": {
-        "link": "Link"
+        "noData": "There are no data"
       }
     },
-    "formikAndYupSection": {
-      "title": "Formik and Yup",
+    "userAuction": {
+      "button": {
+        "complete": "to complete",
+        "delete": "Remove",
+        "edit": "Edit",
+        "start": "Start"
+      },
+      "image": {
+        "auctionPreviewImage": "Auction preview image"
+      }
+    },
+    "userMenu": {
+      "menu": {
+        "auctions": "Auctions"
+      }
+    }
+  },
+  "organisms": {
+    "auctionBiddersSection": {
+      "text": {
+        "history": "History"
+      }
+    },
+    "auctionBiddingSection": {
+      "text": {
+        "currentBid": "Current rate"
+      }
+    },
+    "auctionImagesSection": {
+      "image": {
+        "auctionImage": "Image of the auction"
+      }
+    },
+    "createAuctionForm": {
       "form": {
-        "email": {
-          "label": "Email",
-          "helperText": "Enter your email",
-          "invalidHelperText": "Enter a valid email address",
-          "requiredHelperText": "Email is required"
+        "button": {
+          "submit": "Create"
         },
-        "password": {
-          "label": "Password",
-          "helperText": "Enter your password",
-          "invalidHelperText": "Password should be of minimum 8 characters length",
-          "requiredHelperText": "Password is required"
+        "description": {
+          "helperText": "Enter a description",
+          "label": "Description*",
+          "placeholder": "Think about what you would like to learn from the auction. \nAnd add it to the description",
+          "requiredHelperText": "A description must be entered"
+        },
+        "images": {
+          "button": {
+            "clear": "Clean up"
+          },
+          "label": "Photo*",
+          "requiredHelperText": "You must add a photo"
+        },
+        "startingBid": {
+          "helperText": "Enter your starting bid",
+          "label": "Starting rate*",
+          "requiredHelperText": "An initial bid must be entered"
+        },
+        "title": {
+          "helperText": "Enter a name",
+          "label": "Enter name*",
+          "placeholder": "For example, the destroyed UAV \"Shahed-136\" (Geran-2)",
+          "requiredHelperText": "You must enter a name"
+        }
+      },
+      "text": {
+        "describe": "Describe in detail"
+      }
+    },
+    "createBidForm": {
+      "form": {
+        "amount": {
+          "helperText": "Enter your bid",
+          "label": "Rate*",
+          "minHelperText": "The rate must be more than the current rate",
+          "requiredHelperText": "You must enter a rate"
         },
         "button": {
-          "submit": "Submit"
+          "submit": "Make a bet"
         }
       }
     },
-    "reactErrorBoundarySection": {
-      "title": "React Error Boundary",
-      "button": {
-        "error": "Error"
-      }
-    },
-    "muiPalleteModeSection": {
-      "title": "MUI Pallete Mode",
-      "button": {
-        "toggle": "Toggle"
-      }
-    },
-    "i18nextSection": {
-      "title": "i18next",
-      "select": {
-        "localeLabel": "Locale",
-        "localeItems": {
-          "English": "English",
-          "Ukrainian": "Українська"
+    "editAuctionForm": {
+      "form": {
+        "button": {
+          "submit": "Change auction"
+        },
+        "description": {
+          "helperText": "Enter a description",
+          "label": "Description*",
+          "placeholder": "Think about what you would like to learn from the auction. \nAnd add it to the description",
+          "requiredHelperText": "A description must be entered"
+        },
+        "images": {
+          "button": {
+            "clear": "Clean up"
+          },
+          "fileSize": "The file size must be less than 100 KB",
+          "fileType": "The file format must be .jpg, .png, .jpeg, .webp",
+          "label": "Photo*",
+          "requiredHelperText": "You must add a photo"
+        },
+        "startingBid": {
+          "helperText": "Enter your starting bid",
+          "label": "Starting rate*",
+          "requiredHelperText": "An initial bid must be entered"
+        },
+        "title": {
+          "helperText": "Enter a name",
+          "label": "Enter name*",
+          "placeholder": "For example, the destroyed UAV \"Shahed-136\" (Geran-2)",
+          "requiredHelperText": "You must enter a name"
         }
+      },
+      "text": {
+        "describe": "Describe in detail"
       }
+    },
+    "navbar": {
+      "image": {
+        "blaGO": "Bla-GO"
+      }
+    }
+  },
+  "pages": {
+    "notFound": {
+      "button": {
+        "backToMain": "Return to the main page"
+      },
+      "image": {
+        "technyLettering": "Techny lettering four hundred four text"
+      },
+      "subtitle": "We're sorry, but we can't find what you're looking for",
+      "title": "Page not found"
+    }
+  },
+  "snackbars": {
+    "createBid": {
+      "error": "Something went wrong!",
+      "success": "Your bid has been successfully accepted!"
+    },
+    "deleteUserAuction": {
+      "error": "Something went wrong!",
+      "success": "The auction was successfully deleted!"
+    },
+    "updateUserAuction": {
+      "error": "Something went wrong!",
+      "success": "The auction has been successfully updated!"
+    }
+  },
+  "templates": {
+    "auctionTemplate": {
+      "button": {
+        "back": "Back"
+      },
+      "text": {
+        "description": "Description"
+      }
+    },
+    "auctions": {
+      "title": "Auctions on Bla-GO"
+    },
+    "createAuctionTemplate": {
+      "title": "Create an auction"
+    },
+    "editAuctionTemplate": {
+      "title": "Edit auction"
+    },
+    "entry": {
+      "subtitle": "Goodness is a click away!",
+      "title": "Bla-GO is a platform for creating charity online auctions."
+    },
+    "userAuctions": {
+      "title": "Your auctions"
     }
   }
 }

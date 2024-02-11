@@ -8,7 +8,8 @@ const useClientStore = create(
   persist(
     (set) => ({
       themeMode: THEME_MODE.LIGHT,
-      locale: LOCALE.EN,
+      locale: LOCALE.UK,
+      token: null,
       toggleThemeMode: () => {
         set((state) => ({
           themeMode:
@@ -19,6 +20,9 @@ const useClientStore = create(
       },
       setLocale: (locale) => {
         set({ locale });
+      },
+      setToken: (token) => {
+        set({ token });
       },
     }),
     {

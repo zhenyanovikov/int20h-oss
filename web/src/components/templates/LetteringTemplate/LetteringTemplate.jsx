@@ -1,6 +1,6 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 
-function HandlerTempalte({
+function LetteringTemplate({
   image,
   title,
   subtitle,
@@ -44,4 +44,4 @@ function HandlerTempalte({
   );
 }
 
-export default HandlerTempalte;
+export default LetteringTemplate;

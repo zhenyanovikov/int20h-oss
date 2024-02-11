@@ -1,86 +1,223 @@
 {
-  "organism": {
-    "formikAndYupSection": {
+  "organisms": {
+    "navbar": {
+      "image": {
+        "blaGO": "Bla-GO"
+      }
+    },
+    "createAuctionForm": {
       "form": {
+        "title": {
+          "helperText": "Введіть назву",
+          "requiredHelperText": "Необхідно ввести назву",
+          "label": "Вкажіть назву*",
+          "placeholder": "Наприклад, знищений БПЛА \"Shahed-136\" (Герань-2)"
+        },
+        "description": {
+          "helperText": "Введіть опис",
+          "requiredHelperText": "Необхідно ввести опис",
+          "label": "Опис*",
+          "placeholder": "Подумайте, що ви хотіли би дізнатися з аукціону. І додайте це в опис"
+        },
+        "images": {
+          "fileSize": "Розмір файлу повинен бути менше 100 КБ",
+          "fileType": "Формат файлу повинен бути .jpg, .png, .jpeg, .webp",
+          "requiredHelperText": "Необхідно додати фото",
+          "label": "Фото*",
+          "button": {
+            "clear": "Очистити"
+          }
+        },
+        "startingBid": {
+          "helperText": "Введіть початкову ставку",
+          "requiredHelperText": "Необхідно ввести початкову ставку",
+          "label": "Початкова ставка*"
+        },
         "button": {
-          "submit": "Надіслати"
-        },
-        "email": {
-          "helperText": "Введіть адресу електронної пошти",
-          "invalidHelperText": "Введіть дійсну адресу електронної пошти",
-          "label": "Електронна пошта",
-          "requiredHelperText": "Необхідно вказати адресу електронної пошти"
-        },
-        "password": {
-          "helperText": "Введіть ваш пароль",
-          "invalidHelperText": "Довжина пароля повинна бути мінімум 8 символів",
-          "label": "Пароль",
-          "requiredHelperText": "Необхідно ввести пароль"
+          "submit": "Створити"
         }
       },
-      "title": "Формік і Ага"
-    },
-    "i18nextSection": {
-      "select": {
-        "localeLabel": "Локаль",
-        "localeItems": {
-          "English": "English",
-          "Ukrainian": "Українська"
-        }
-      },
-      "title": "i18 наступний"
-    },
-    "muiPalleteModeSection": {
-      "button": {
-        "toggle": "Перемикач"
-      },
-      "title": "Режим палітри MUI"
-    },
-    "reactErrorBoundarySection": {
-      "button": {
-        "error": "Помилка"
-      },
-      "title": "Межа помилки реакції"
-    },
-    "reactQuerySection": {
-      "title": "Реагувати на запит"
-    },
-    "reactRouterSection": {
       "text": {
-        "link": "Посилання"
-      },
-      "title": "Маршрутизатор React"
-    }
-  },
-  "page": {
-    "error": {
-      "button": {
-        "returnToPreviousPage": "Повернутися до попередньої сторінки"
-      },
-      "image": {
-        "technyWarning": "Значок попередження Techny"
-      },
-      "subtitle": "Вибачте, але сталася несподівана помилка. \nНашу команду сповіщено, і ми працюємо над тим, щоб якнайшвидше це виправити. \nБудь-ласка спробуйте пізніше.",
-      "title": "Ой-ой! \nЩось пішло не так"
+        "describe": "Опишіть у подробицях"
+      }
     },
-    "notFound": {
-      "button": {
-        "backToHome": "Назад додому"
+    "editAuctionForm": {
+      "form": {
+        "title": {
+          "helperText": "Введіть назву",
+          "requiredHelperText": "Необхідно ввести назву",
+          "label": "Вкажіть назву*",
+          "placeholder": "Наприклад, знищений БПЛА \"Shahed-136\" (Герань-2)"
+        },
+        "description": {
+          "helperText": "Введіть опис",
+          "requiredHelperText": "Необхідно ввести опис",
+          "label": "Опис*",
+          "placeholder": "Подумайте, що ви хотіли би дізнатися з аукціону. І додайте це в опис"
+        },
+        "images": {
+          "fileSize": "Розмір файлу повинен бути менше 100 КБ",
+          "fileType": "Формат файлу повинен бути .jpg, .png, .jpeg, .webp",
+          "requiredHelperText": "Необхідно додати фото",
+          "label": "Фото*",
+          "button": {
+            "clear": "Очистити"
+          }
+        },
+        "startingBid": {
+          "helperText": "Введіть початкову ставку",
+          "requiredHelperText": "Необхідно ввести початкову ставку",
+          "label": "Початкова ставка*"
+        },
+        "button": {
+          "submit": "Змінити аукціон"
+        }
       },
+      "text": {
+        "describe": "Опишіть у подробицях"
+      }
+    },
+    "auctionImages": {
+      "image": {}
+    },
+    "auctionBiddingSection": {
+      "text": {
+        "currentBid": "Поточна ставка"
+      }
+    },
+    "auctionImagesSection": {
       "image": {
-        "technyLettering": "Помилка технічного напису 404 із попереджувальним знаком і текстом із гайковим ключем"
-      },
-      "subtitle": "Здається, ви неправильно повернули. \nСторінка, яку ви шукаєте, можливо, була переміщена або не існує.",
-      "title": "Ой! \nСторінку не знайдено"
+        "auctionImage": "Зображення аукціону"
+      }
+    },
+    "createBidForm": {
+      "form": {
+        "amount": {
+          "helperText": "Введіть ставку",
+          "requiredHelperText": "Необхідно ввести ставку",
+          "minHelperText": "Ставка повинна бути більше ніж поточна",
+          "label": "Ставка*"
+        },
+        "button": {
+          "submit": "Зробити ставку"
+        }
+      }
+    },
+    "auctionBiddersSection": {
+      "text": {
+        "history": "Історія"
+      }
     }
   },
-  "template": {
-    "home": {
+  "pages": {
+    "notFound": {
       "image": {
-        "technyFrames": "Технічні кадри з медіаконтентом 1"
+        "technyLettering": "Techny буквене позначення чотириста чотири тексту"
       },
-      "subtitle": "Розширення можливостей інновацій завдяки комплексній кодовій базі для швидкого розвитку",
-      "title": "Набір інструментів героя хакатону"
+      "title": "Сторінку не знайдено",
+      "subtitle": "Вибачте, але ми не можемо знайти те, що ви шукаєте",
+      "button": {
+        "backToMain": "Повернутися на головну"
+      }
+    }
+  },
+  "templates": {
+    "entry": {
+      "title": "Bla-GO – платформа для створення благодійних онлайн аукціонів.",
+      "subtitle": "Добро на відстані кліку!"
+    },
+    "auctions": {
+      "title": "Аукціони на Bla-GO"
+    },
+    "createAuctionTemplate": {
+      "title": "Створити аукціон"
+    },
+    "userAuctions": {
+      "title": "Ваші аукціони"
+    },
+    "auctionTemplate": {
+      "button": {
+        "back": "Назад"
+      },
+      "text": {
+        "description": "Опис"
+      }
+    },
+    "editAuctionTemplate": {
+      "title": "Редагувати аукціон"
+    }
+  },
+  "molecules": {
+    "auction": {
+      "image": {
+        "auctionPreviewImage": "Зображення для попереднього перегляду аукціону"
+      }
+    },
+    "empty": {
+      "text": {
+        "noData": "Даних немає"
+      },
+      "image": {
+        "empty": "Порожньо"
+      }
+    },
+    "userMenu": {
+      "menu": {
+        "auctions": "Аукціони",
+        "logout": "Вийти"
+      }
+    },
+    "userAuction": {
+      "button": {
+        "edit": "Редагувати",
+        "start": "Розпочати",
+        "delete": "Видалити",
+        "complete": "Завершити"
+      },
+      "image": {
+        "auctionPreviewImage": "Зображення для попереднього перегляду аукціону"
+      }
+    },
+    "createAuctionButton": {
+      "button": {
+        "create": "Створити аукціон"
+      }
+    },
+    "googleLoginButton": {
+      "continueWithGoogle": "Продовжити з Google"
+    }
+  },
+  "snackbars": {
+    "createBid": {
+      "success": "Ваша ставка успішно прийнята!",
+      "error": "Щось пішло не так!"
+    },
+    "updateAuction": {
+      "error": "Щось пішло не так!",
+      "success": "Аукціон успішно оновлений!"
+    },
+    "deleteAuction": {
+      "success": "Аукціон успішно видалений!",
+      "error": "Щось пішло не так!"
+    },
+    "login": {
+      "error": "Щось пішло не так!"
+    },
+    "createAuction": {
+      "success": "Аукціон успішно створений!",
+      "error": "Щось пішло не так!"
+    },
+    "uploadImages": {
+      "error": "Щось пішло не так!"
+    }
+  },
+  "constants": {
+    "auctionStatus": {
+      "label": {
+        "pending": "Очікується",
+        "active": "Активний",
+        "completed": "Завершений"
+      }
     }
   }
 }

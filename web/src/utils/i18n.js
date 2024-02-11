@@ -15,8 +15,8 @@ i18n.use(initReactI18next).init({
       translation: ukLocale,
     },
   },
-  lng: LOCALE.EN,
-  fallbackLng: LOCALE.EN,
+  lng: LOCALE.UK,
+  fallbackLng: LOCALE.UK,
   interpolation: {
     escapeValue: false,
   },
