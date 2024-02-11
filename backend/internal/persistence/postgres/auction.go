@@ -19,7 +19,6 @@ func (p *Postgres) GetAllAuctions(ctx context.Context) ([]*models.Auction, error
 	var auctions []*models.Auction
 	err := p.db.NewSelect().
 		Model(&auctions).
-		Group("auction.id").
 		Relation(OwnerRelation).
 		Relation(WinnerRelation).
 		Relation(StartingBidRelation).
