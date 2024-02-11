@@ -70,6 +70,12 @@ func (s Service) UpdateAuction(ctx context.Context, updatedAuction *models.Aucti
 	auction.WinningBidID = updatedAuction.WinningBidID
 	auction.Status = updatedAuction.Status
 
+	auction.StartingBid.Amount = updatedAuction.StartingBid.Amount
+
+	if err = s.auctionRepo.UpdateBid(ctx, auction.StartingBid); err != nil {
+		return fmt.Errorf("failed to create starting bid: %w", err)
+	}
+
 	return s.auctionRepo.UpdateAuction(ctx, auction)
 }
 

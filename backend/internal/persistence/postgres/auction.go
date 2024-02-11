@@ -121,6 +121,19 @@ func (p *Postgres) UpdateAuction(ctx context.Context, auction *models.Auction) e
 	return nil
 }
 
+func (p *Postgres) UpdateBid(ctx context.Context, bid *models.Bid) error {
+	_, err := p.db.NewUpdate().
+		Model(bid).
+		Where("id = ?", bid.ID).
+		Returning("*").
+		Exec(ctx)
+	if err != nil {
+		return p.err(err)
+	}
+
+	return nil
+}
+
 func (p *Postgres) DeleteAuction(ctx context.Context, id uuid.UUID) error {
 	_, err := p.db.NewDelete().
 		Model(&models.Auction{}).

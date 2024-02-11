@@ -29,6 +29,7 @@ type Auction interface {
 	CreateBid(ctx context.Context, bid *models.Bid) error
 
 	UpdateAuction(ctx context.Context, auction *models.Auction) error
+	UpdateBid(ctx context.Context, bid *models.Bid) error
 
 	DeleteAuction(ctx context.Context, id uuid.UUID) error
 }
