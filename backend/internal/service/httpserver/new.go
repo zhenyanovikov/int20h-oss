@@ -12,15 +12,19 @@ type HTTPServer struct {
 	cfg            config.Config
 	router         *mux.Router
 	googleOAuthCfg *oauth2.Config
-	authSrv        service.Auth
-	userSrv        service.User
+
+	authSrv    service.Auth
+	userSrv    service.User
+	auctionSrv service.Auction
 }
 
-func New(cfg config.Config, authSrv service.Auth, userSrv service.User) *HTTPServer {
+func New(cfg config.Config, authSrv service.Auth,
+	userSrv service.User, auctionSrv service.Auction) *HTTPServer {
 	server := &HTTPServer{
-		cfg:     cfg,
-		authSrv: authSrv,
-		userSrv: userSrv,
+		cfg:        cfg,
+		authSrv:    authSrv,
+		userSrv:    userSrv,
+		auctionSrv: auctionSrv,
 		googleOAuthCfg: &oauth2.Config{
 			RedirectURL:  cfg.Oauth.Google.RedirectURL,
 			ClientID:     cfg.Oauth.Google.ClientID,

@@ -9,6 +9,7 @@ package bootstrap
 import (
 	"oss-backend/internal/config"
 	"oss-backend/internal/persistence/postgres"
+	"oss-backend/internal/service/auction"
 	"oss-backend/internal/service/auth"
 	"oss-backend/internal/service/httpserver"
 	"oss-backend/internal/service/user"
@@ -24,8 +25,9 @@ func Up() (*Dependencies, error) {
 	configPostgres := getPostgresConfig(configConfig)
 	postgresPostgres := postgres.New(configPostgres)
 	service := auth.New(configConfig, postgresPostgres, postgresPostgres)
-	userService := user.New()
-	httpServer := httpserver.New(configConfig, service, userService)
+	userService := user.New(postgresPostgres)
+	auctionService := auction.New(postgresPostgres)
+	httpServer := httpserver.New(configConfig, service, userService, auctionService)
 	dependencies := NewDependencies(configConfig, httpServer, service, userService, postgresPostgres, postgresPostgres)
 	return dependencies, nil
 }

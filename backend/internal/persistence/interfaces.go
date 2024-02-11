@@ -18,3 +18,14 @@ type User interface {
 	GetByID(ctx context.Context, id uuid.UUID) (*models.User, error)
 	UpsertOnEmail(ctx context.Context, user *models.User) error
 }
+
+type Auction interface {
+	GetAllAuctions(ctx context.Context) ([]*models.Auction, error)
+	GetAuctionByID(ctx context.Context, id uuid.UUID) (*models.Auction, error)
+	GetAuctionsByUserID(ctx context.Context, userID uuid.UUID) ([]*models.Auction, error)
+	CreateAuction(ctx context.Context, auction *models.Auction) error
+	UpdateAuction(ctx context.Context, auction *models.Auction) error
+	DeleteAuction(ctx context.Context, id uuid.UUID) error
+
+	CreateBid(ctx context.Context, bid *models.Bid) error
+}

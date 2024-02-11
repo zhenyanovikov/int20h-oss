@@ -22,4 +22,30 @@ create table user_credentials
     primary key (id)
 );
 
+create table auctions
+(
+    id              uuid               default uuid_generate_v4(),
+    title           text      not null,
+    description     text      not null,
+    image_urls      text[],
+    status          text      not null,
+    created_at      timestamp not null default now(),
+    ended_at          timestamp,
+    owner_id        uuid      not null references users (id) on delete cascade,
+    winner_id       uuid references users (id) on delete cascade,
+    starting_bid_id uuid      not null,
+    winning_bid_id  uuid,
+    primary key (id)
+);
+
+create table bids
+(
+    id         uuid      not null default uuid_generate_v4(),
+    auction_id uuid,
+    user_id    uuid references users (id) on delete cascade,
+    amount     integer   not null,
+    created_at timestamp not null default now(),
+    primary key (id)
+);
+
 COMMIT;

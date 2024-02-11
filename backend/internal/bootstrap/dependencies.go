@@ -15,19 +15,19 @@ type Dependencies struct {
 	AuthService service.Auth
 	UserService service.User
 
-	AuthDB persistence.Auth
-	UserDB persistence.User
+	authRepo persistence.Auth
+	userRepo persistence.User
 }
 
 func NewDependencies(config config.Config, httpServer *httpserver.HTTPServer,
 	authSrv service.Auth, userSrv service.User,
-	authDB persistence.Auth, userDB persistence.User) *Dependencies {
+	authRepo persistence.Auth, userRepo persistence.User) *Dependencies {
 	return &Dependencies{
 		Config:      config,
 		HTTPServer:  httpServer,
 		AuthService: authSrv,
 		UserService: userSrv,
-		AuthDB:      authDB,
-		UserDB:      userDB,
+		authRepo:    authRepo,
+		userRepo:    userRepo,
 	}
 }

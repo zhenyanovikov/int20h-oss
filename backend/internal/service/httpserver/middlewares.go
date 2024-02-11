@@ -13,7 +13,7 @@ func (s *HTTPServer) authMiddleware(next http.Handler) http.Handler {
 		t := strings.Split(authHeader, " ")
 
 		if len(t) != 2 || t[0] != "Bearer" {
-			s.error(w, http.StatusUnauthorized, fmt.Errorf("unauthorized"))
+			s.respondError(w, http.StatusUnauthorized, fmt.Errorf("unauthorized"))
 			return
 		}
 
@@ -21,11 +21,12 @@ func (s *HTTPServer) authMiddleware(next http.Handler) http.Handler {
 
 		user, err := s.authSrv.Login(r.Context(), authToken)
 		if err != nil {
-			s.error(w, http.StatusUnauthorized, fmt.Errorf("unauthorized"))
+			s.respondError(w, http.StatusUnauthorized, fmt.Errorf("unauthorized"))
 			return
 		}
 
 		r = r.WithContext(context.WithValue(r.Context(), "user", user))
+		r = r.WithContext(context.WithValue(r.Context(), "user_id", user.ID))
 
 		next.ServeHTTP(w, r)
 		return

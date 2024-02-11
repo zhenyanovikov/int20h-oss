@@ -11,13 +11,13 @@ import (
 func (s *HTTPServer) oauthCallback(w http.ResponseWriter, r *http.Request) {
 	exchange, err := s.googleOAuthCfg.Exchange(context.Background(), r.URL.Query().Get("code"))
 	if err != nil {
-		s.error(w, http.StatusInternalServerError, fmt.Errorf("exchange: %w", err))
+		s.respondError(w, http.StatusInternalServerError, fmt.Errorf("exchange: %w", err))
 		return
 	}
 
 	gUser, err := fetchGoogleUser(exchange.AccessToken)
 	if err != nil {
-		s.error(w, http.StatusInternalServerError, fmt.Errorf("login: %w", err))
+		s.respondError(w, http.StatusInternalServerError, fmt.Errorf("complete oauth: %w", err))
 		return
 	}
 
@@ -30,11 +30,11 @@ func (s *HTTPServer) oauthCallback(w http.ResponseWriter, r *http.Request) {
 
 	res, err := s.authSrv.GetCredentials(context.Background(), &user)
 	if err != nil {
-		s.error(w, http.StatusInternalServerError, fmt.Errorf("login: %w", err))
+		s.respondError(w, http.StatusInternalServerError, fmt.Errorf("login: %w", err))
 		return
 	}
 
-	s.respondBody(w, http.StatusOK, res)
+	s.respond(w, http.StatusOK, res)
 
 	return
 }
