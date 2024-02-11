@@ -77,6 +77,11 @@ func (p *Postgres) GetBidHistory(ctx context.Context, auctionID uuid.UUID) ([]mo
 		return nil, p.err(err)
 	}
 
+	if len(bids) > 0 {
+		// remove the first bid as it is the starting bid
+		bids = bids[:len(bids)-1]
+	}
+
 	return bids, nil
 }
 
