@@ -24,11 +24,11 @@ func (s *HTTPServer) newRouter(_ config.Config) *mux.Router {
 	protected := api.PathPrefix("/").Subrouter()
 	protected.Use(s.authMiddleware)
 
-	api.HandleFunc("/auth/{provider}/login", gothic.BeginAuthHandler).Methods(http.MethodGet)
-	api.HandleFunc("/auth/{provider}/callback", s.oauthCallback).Methods(http.MethodGet)
+	api.HandleFunc("/auth/{provider}/login", gothic.BeginAuthHandler).Methods(http.MethodGet, http.MethodOptions)
+	api.HandleFunc("/auth/{provider}/callback", s.oauthCallback).Methods(http.MethodGet, http.MethodOptions)
 
-	api.HandleFunc("/status", s.statusHandler).Methods(http.MethodGet)
-	protected.HandleFunc("/status-auth", s.statusHandler).Methods(http.MethodGet)
+	api.HandleFunc("/status", s.statusHandler).Methods(http.MethodGet, http.MethodOptions)
+	protected.HandleFunc("/status-auth", s.statusHandler).Methods(http.MethodGet, http.MethodOptions)
 
 	return router
 }
