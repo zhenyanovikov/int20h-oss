@@ -32,7 +32,7 @@ func (s Service) GetByUserID(ctx context.Context, userID uuid.UUID) ([]*models.A
 
 func (s Service) CreateAuction(ctx context.Context, auction *models.Auction) error {
 	auction.ID = uuid.New()
-	auction.Status = models.AuctionStatusActive
+	auction.Status = models.AuctionStatusPending
 	auction.OwnerID = ctx.Value("user_id").(uuid.UUID)
 	auction.CreatedAt = time.Now()
 

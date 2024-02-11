@@ -18,8 +18,8 @@ type Auction struct {
 	Description string    `json:"description"`
 	ImageURLs   []string  `json:"images" bun:"image_urls,array"`
 	Status      string    `json:"status"`
-	CreatedAt   time.Time `json:"createdAt" bun:",scanonly"`
-	EndedAt     time.Time `json:"endedAt,omitempty" bun:",nullzero"`
+	CreatedAt   time.Time `json:"createdAt"`
+	EndedAt     time.Time `json:"endedAt,omitempty"`
 	Owner       *User     `json:"owner,omitempty" bun:"rel:belongs-to"`
 	Winner      *User     `json:"winner,omitempty" bun:"rel:belongs-to"`
 	StartingBid *Bid      `json:"startingBid" bun:"rel:has-one,join:starting_bid_id=id"`

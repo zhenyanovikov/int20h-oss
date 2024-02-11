@@ -70,6 +70,7 @@ func (p *Postgres) GetBidHistory(ctx context.Context, auctionID uuid.UUID) ([]mo
 	err := p.db.NewSelect().
 		Model(&bids).
 		Where("auction_id = ?", auctionID).
+		Order("created_at DESC").
 		Relation(UserRelation).
 		Scan(ctx)
 	if err != nil {
