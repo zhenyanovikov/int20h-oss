@@ -6,6 +6,7 @@ import { useGetUser } from "../../../api/user";
 import { getLastBidAmount } from "../../../helpers/auction";
 import { hryvniasFormatter, scaleAmountDown } from "../../../helpers/currency";
 import { AUCTION_STATUS } from "../../../constants/auction";
+import { useIsLoggedIn } from "../../../hooks/useIsLoggedIn";
 import AuctionMetadata from "../../molecules/AuctionMetadata/AuctionMetadata";
 import CreateBidForm from "../CreateBidForm/CreateBidForm";
 
@@ -15,6 +16,7 @@ function AuctionBiddingSection({ auction }) {
   const { data: auctionHistoryData, isLoading: isGetAuctionHistoryLoading } =
     useGetAuctionHistory(auction.id);
   const { data: userData } = useGetUser();
+  const isLoggedIn = useIsLoggedIn()
 
   const isOwner = userData?.id === auction.owner.id;
 
@@ -24,7 +26,7 @@ function AuctionBiddingSection({ auction }) {
   const isAuctionPending = auction.status === AUCTION_STATUS.PENDING;
   const isAuctionActive = auction.status === AUCTION_STATUS.ACTIVE;
 
-  const hasCreateBidForm = isAuctionActive && !isOwner;
+  const hasCreateBidForm = isAuctionActive && isLoggedIn && !isOwner;
 
   return (
     <Box>
