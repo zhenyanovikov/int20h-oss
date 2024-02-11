@@ -18,6 +18,11 @@ func (s *HTTPServer) getMineAuctions(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if len(auctions) == 0 {
+		s.respond(w, http.StatusOK, []string{})
+		return
+	}
+
 	s.respond(w, http.StatusOK, auctions)
 }
 
