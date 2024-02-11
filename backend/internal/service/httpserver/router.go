@@ -17,6 +17,8 @@ func (s *HTTPServer) newRouter(_ config.Config) *mux.Router {
 		google.New(s.googleOAuthCfg.ClientID, s.googleOAuthCfg.ClientSecret, s.googleOAuthCfg.RedirectURL, s.googleOAuthCfg.Scopes...),
 	)
 
+	router.Use(mux.CORSMethodMiddleware(router))
+
 	api := router.PathPrefix("/api/v1").Subrouter()
 
 	protected := api.PathPrefix("/").Subrouter()
