@@ -6,7 +6,7 @@ import { useGetUser } from "../../../api/user";
 import { getLastBidAmount } from "../../../helpers/auction";
 import { hryvniasFormatter, scaleAmountDown } from "../../../helpers/currency";
 import { AUCTION_STATUS } from "../../../constants/auction";
-import { useIsLoggedIn } from "../../../hooks/useIsLoggedIn";
+import useIsLoggedIn from "../../../hooks/useIsLoggedIn";
 import AuctionMetadata from "../../molecules/AuctionMetadata/AuctionMetadata";
 import CreateBidForm from "../CreateBidForm/CreateBidForm";
 
