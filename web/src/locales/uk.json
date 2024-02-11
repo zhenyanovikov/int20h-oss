@@ -11,7 +11,7 @@
           "helperText": "Введіть назву",
           "requiredHelperText": "Необхідно ввести назву",
           "label": "Вкажіть назву*",
-          "placeholder": "Наприклад, знищений БПЛА \"Shahed-136\" (Герань-2)"
+          "placeholder": "Наприклад, \"Знищений БПЛА \"Shahed-136\" (Герань-2)\""
         },
         "description": {
           "helperText": "Введіть опис",
@@ -47,7 +47,7 @@
           "helperText": "Введіть назву",
           "requiredHelperText": "Необхідно ввести назву",
           "label": "Вкажіть назву*",
-          "placeholder": "Наприклад, знищений БПЛА \"Shahed-136\" (Герань-2)"
+          "placeholder": "Наприклад, \"Знищений БПЛА \"Shahed-136\" (Герань-2)\""
         },
         "description": {
           "helperText": "Введіть опис",
@@ -82,7 +82,9 @@
     },
     "auctionBiddingSection": {
       "text": {
-        "currentBid": "Поточна ставка"
+        "currentBid": "Поточна ставка",
+        "startingBid": "Початкова ставка",
+        "finalBid": "Переможна ставка"
       }
     },
     "auctionImagesSection": {
@@ -218,6 +220,18 @@
         "active": "Активний",
         "completed": "Завершений"
       }
+    }
+  },
+  "page": {
+    "error": {
+      "image": {
+        "technyWarning": "Значок попередження Techny"
+      },
+      "button": {
+        "returnToPreviousPage": "Повернутися до попередньої сторінки"
+      },
+      "title": "Ой-ой! \nЩось пішло не так",
+      "subtitle": "Вибачте, але сталася несподівана помилка. \nНашу команду сповіщено, і ми працюємо над тим, щоб якнайшвидше це виправити. \nБудь-ласка спробуйте пізніше."
     }
   }
 }

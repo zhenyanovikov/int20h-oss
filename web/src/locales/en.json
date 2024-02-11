@@ -40,8 +40,12 @@
     },
     "userMenu": {
       "menu": {
-        "auctions": "Auctions"
+        "auctions": "Auctions",
+        "logout": "Go out"
       }
+    },
+    "googleLoginButton": {
+      "continueWithGoogle": "Continue with Google"
     }
   },
   "organisms": {
@@ -52,7 +56,9 @@
     },
     "auctionBiddingSection": {
       "text": {
-        "currentBid": "Current rate"
+        "currentBid": "Current rate",
+        "finalBid": "Winning bet",
+        "startingBid": "Initial bid"
       }
     },
     "auctionImagesSection": {
@@ -76,7 +82,9 @@
             "clear": "Clean up"
           },
           "label": "Photo*",
-          "requiredHelperText": "You must add a photo"
+          "requiredHelperText": "You must add a photo",
+          "fileSize": "The file size must be less than 100 KB",
+          "fileType": "The file format must be .jpg, .png, .jpeg, .webp"
         },
         "startingBid": {
           "helperText": "Enter your starting bid",
@@ -166,13 +174,23 @@
       "error": "Something went wrong!",
       "success": "Your bid has been successfully accepted!"
     },
-    "deleteUserAuction": {
+    "createAuction": {
+      "error": "Something went wrong!",
+      "success": "The auction was successfully created!"
+    },
+    "deleteAuction": {
       "error": "Something went wrong!",
       "success": "The auction was successfully deleted!"
     },
-    "updateUserAuction": {
+    "login": {
+      "error": "Something went wrong!"
+    },
+    "updateAuction": {
       "error": "Something went wrong!",
       "success": "The auction has been successfully updated!"
+    },
+    "uploadImages": {
+      "error": "Something went wrong!"
     }
   },
   "templates": {
@@ -199,6 +217,18 @@
     },
     "userAuctions": {
       "title": "Your auctions"
+    }
+  },
+  "page": {
+    "error": {
+      "button": {
+        "returnToPreviousPage": "Return to the previous page"
+      },
+      "image": {
+        "technyWarning": "Techny warning icon"
+      },
+      "subtitle": "Sorry, but an unexpected error occurred.\n\nOur team has been notified and we are working to fix this as soon as possible.\n\nPlease try again later.",
+      "title": "Oh oh!\n\nSomething went wrong"
     }
   }
 }

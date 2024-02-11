@@ -171,12 +171,12 @@ function CreateAuctionForm() {
     const createdAuction = {
       ...values,
       startingBid: {
-        amount: scaleAmountUp(values.startingBid),
+        amount: scaleAmountUp(values.startingBid.amount),
       },
     };
 
     createAuctionMutate(createdAuction);
-    navigate(ROUTE.AUCTIONS);
+    navigate(ROUTE.USER_AUCTIONS);
   }
 
   async function handleChangeImages(event) {

@@ -11,6 +11,7 @@ import { Close as CloseIcon } from "@mui/icons-material";
 import { MuiFileInput } from "mui-file-input";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { VALID_IMAGE_TYPES } from "../../../constants/validation";
 import { getAuctionValidationSchema } from "../../../helpers/validation";
 import { scaleAmountDown, scaleAmountUp } from "../../../helpers/currency";
@@ -18,9 +19,11 @@ import { CURRENCY_SYMBOL } from "../../../constants/currency";
 import { AUCTION_STATUS } from "../../../constants/auction";
 import { useUploadImages } from "../../../api/media";
 import { useUpdateAuction } from "../../../api/auctions";
+import { ROUTE } from "../../../constants/router";
 
 function EditAuctionForm({ auction }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const isAuctionActive = auction.status === AUCTION_STATUS.ACTIVE;
   const isAuctionCompleted = auction.status === AUCTION_STATUS.COMPLETED;
@@ -31,6 +34,7 @@ function EditAuctionForm({ auction }) {
 
   const formik = useFormik({
     initialValues: {
+      status: auction.status,
       title: auction.title,
       description: auction.description,
       images: auction.images,
@@ -129,8 +133,8 @@ function EditAuctionForm({ auction }) {
               <TextField
                 fullWidth
                 type="number"
-                id="startingBid"
-                name="startingBid"
+                id="startingBid.amount"
+                name="startingBid.amount"
                 label={t("organisms.editAuctionForm.form.startingBid.label")}
                 value={formik.values.startingBid.amount}
                 onChange={formik.handleChange}
@@ -173,14 +177,16 @@ function EditAuctionForm({ auction }) {
   );
 
   function handleSubmit(values) {
+    console.log("🚀 ~ handleSubmit ~ values:", values);
     const createdAuction = {
       ...values,
       startingBid: {
-        amount: scaleAmountUp(values.startingBid),
+        amount: scaleAmountUp(values.startingBid.amount),
       },
     };
 
     updateAuctionMutate(createdAuction);
+    navigate(ROUTE.USER_AUCTIONS);
   }
 
   async function handleChangeImages(event) {

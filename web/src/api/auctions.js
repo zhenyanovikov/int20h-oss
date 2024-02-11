@@ -9,6 +9,7 @@ import {
   AUCTION_URL,
   AUCTION_HISTORY_URL,
   AUCTION_BID_URL,
+  AUCTION_HISTORY_REFETCH_INTERVAL,
 } from "../constants/auction";
 import { USER_AUCTIONS_KEY } from "../constants/user";
 import apiClient from "./apiClient";
@@ -43,10 +44,7 @@ async function getAuctionHistory(id) {
 }
 
 async function createBid(id, bid) {
-  const res = await apiClient.post(
-    generatePath(AUCTION_BID_URL, { id }),
-    bid
-  );
+  const res = await apiClient.post(generatePath(AUCTION_BID_URL, { id }), bid);
   return res.data;
 }
 
@@ -75,6 +73,7 @@ export function useCreateAuction() {
         variant: "success",
       });
       queryClient.invalidateQueries({ queryKey: [AUCTIONS_KEY] });
+      queryClient.invalidateQueries({ queryKey: [USER_AUCTIONS_KEY] });
     },
     onError: () => {
       enqueueSnackbar(t("snackbars.createAuction.error"), { variant: "error" });
@@ -115,6 +114,7 @@ export function useDeleteAuction() {
         variant: "success",
       });
       queryClient.invalidateQueries({ queryKey: [AUCTIONS_KEY] });
+      queryClient.invalidateQueries({ queryKey: [USER_AUCTIONS_KEY] });
     },
     onError: () => {
       enqueueSnackbar(t("snackbars.deleteAuction.error"), { variant: "error" });
@@ -126,7 +126,7 @@ export function useGetAuctionHistory(id) {
   return useQuery({
     queryKey: [AUCTIONS_KEY, id, AUCTION_HISTORY_KEY],
     queryFn: () => getAuctionHistory(id),
-    refetchInterval: 30000,
+    refetchInterval: AUCTION_HISTORY_REFETCH_INTERVAL,
   });
 }
 

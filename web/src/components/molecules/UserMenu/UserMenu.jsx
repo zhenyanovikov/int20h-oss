@@ -2,7 +2,6 @@ import { useState } from "react";
 import { IconButton, Avatar, Menu, MenuItem, Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import useClientStore from "../../../store/clientStore";
 import { getFullName } from "../../../helpers/user";
 import { useLogout } from "../../../api/auth";
 import { useGetUser } from "../../../api/user";
@@ -11,7 +10,6 @@ import { ROUTE } from "../../../constants/router";
 function UserMenu() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const setToken = useClientStore((state) => state.setToken);
 
   const { data: userData, isLoading: isGetUserLoading } = useGetUser();
   const logout = useLogout();

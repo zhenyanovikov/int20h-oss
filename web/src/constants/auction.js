@@ -5,6 +5,8 @@ export const AUCTION_URL = "/auctions/:id";
 export const AUCTION_HISTORY_URL = "/auctions/:id/bid";
 export const AUCTION_BID_URL = "/auctions/:id/bid";
 
+export const AUCTION_HISTORY_REFETCH_INTERVAL = 30000;
+
 export const AUCTION_STATUS = {
   PENDING: "pending",
   ACTIVE: "active",
