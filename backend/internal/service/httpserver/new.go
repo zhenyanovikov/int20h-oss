@@ -16,15 +16,18 @@ type HTTPServer struct {
 	authSrv    service.Auth
 	userSrv    service.User
 	auctionSrv service.Auction
+	mediaSrv   service.Media
 }
 
 func New(cfg config.Config, authSrv service.Auth,
-	userSrv service.User, auctionSrv service.Auction) *HTTPServer {
+	userSrv service.User, auctionSrv service.Auction,
+	mediaSrv service.Media) *HTTPServer {
 	server := &HTTPServer{
 		cfg:        cfg,
 		authSrv:    authSrv,
 		userSrv:    userSrv,
 		auctionSrv: auctionSrv,
+		mediaSrv:   mediaSrv,
 		googleOAuthCfg: &oauth2.Config{
 			RedirectURL:  cfg.Oauth.Google.RedirectURL,
 			ClientID:     cfg.Oauth.Google.ClientID,

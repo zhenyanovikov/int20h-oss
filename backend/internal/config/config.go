@@ -23,6 +23,7 @@ type Config struct {
 	Postgres  Postgres `json:"postgres"`
 	Redis     Redis    `json:"redis"`
 	Log       Logger   `json:"logger"`
+	AWS       AWS      `json:"aws"`
 }
 
 type Oauth struct {
@@ -52,6 +53,17 @@ type Redis struct {
 
 type Logger struct {
 	Level string `json:"level" default:"info"`
+}
+
+type AWS struct {
+	Region          string `json:"region" default:"us-east-1"`
+	AccessKeyID     string `json:"access_key_id"`
+	SecretAccessKey string `json:"access_key_secret"`
+	S3              S3     `json:"s3"`
+}
+
+type S3 struct {
+	Bucket string `json:"bucket"`
 }
 
 func New() (Config, error) {

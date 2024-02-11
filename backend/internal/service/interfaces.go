@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"io"
 
 	"github.com/google/uuid"
 	"oss-backend/internal/models"
@@ -24,4 +25,9 @@ type Auction interface {
 	CreateAuction(ctx context.Context, auction *models.Auction) error
 	UpdateAuction(ctx context.Context, auction *models.Auction) error
 	DeleteAuction(ctx context.Context, id uuid.UUID) error
+	CreateBid(ctx context.Context, bid *models.Bid) error
+}
+
+type Media interface {
+	Upload(ctx context.Context, fileReader io.Reader, extension string) (url string, err error)
 }

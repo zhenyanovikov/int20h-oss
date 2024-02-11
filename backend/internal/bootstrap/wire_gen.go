@@ -12,6 +12,7 @@ import (
 	"oss-backend/internal/service/auction"
 	"oss-backend/internal/service/auth"
 	"oss-backend/internal/service/httpserver"
+	"oss-backend/internal/service/media"
 	"oss-backend/internal/service/user"
 )
 
@@ -27,7 +28,11 @@ func Up() (*Dependencies, error) {
 	service := auth.New(configConfig, postgresPostgres, postgresPostgres)
 	userService := user.New(postgresPostgres)
 	auctionService := auction.New(postgresPostgres)
-	httpServer := httpserver.New(configConfig, service, userService, auctionService)
+	mediaService, err := media.New(configConfig)
+	if err != nil {
+		return nil, err
+	}
+	httpServer := httpserver.New(configConfig, service, userService, auctionService, mediaService)
 	dependencies := NewDependencies(configConfig, httpServer, service, userService, postgresPostgres, postgresPostgres)
 	return dependencies, nil
 }
