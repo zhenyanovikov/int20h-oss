@@ -7,7 +7,7 @@ import (
 	"oss-backend/internal/models"
 )
 
-func (p *Postgres) GetByID(ctx context.Context, id uuid.UUID) (*models.User, error) {
+func (p *Postgres) GetUserByID(ctx context.Context, id uuid.UUID) (*models.User, error) {
 	var user models.User
 
 	err := p.db.NewSelect().
@@ -21,7 +21,7 @@ func (p *Postgres) GetByID(ctx context.Context, id uuid.UUID) (*models.User, err
 	return &user, nil
 }
 
-func (p *Postgres) UpsertOnEmail(ctx context.Context, user *models.User) error {
+func (p *Postgres) UpsertUserOnEmail(ctx context.Context, user *models.User) error {
 	_, err := p.db.NewInsert().
 		On("CONFLICT (email) DO UPDATE").
 		Model(user).

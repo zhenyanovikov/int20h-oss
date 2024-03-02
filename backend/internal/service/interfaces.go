@@ -18,18 +18,12 @@ type User interface {
 	GetUser(id uuid.UUID) (*models.User, error)
 }
 
-type Auction interface {
-	GetAll(ctx context.Context) ([]*models.Auction, error)
-	GetByID(ctx context.Context, id uuid.UUID) (*models.Auction, error)
-	GetByUserID(ctx context.Context, userID uuid.UUID) ([]*models.Auction, error)
-	GetBidHistory(ctx context.Context, auctionID uuid.UUID) ([]models.Bid, error)
-
-	CreateAuction(ctx context.Context, auction *models.Auction) error
-	CreateBid(ctx context.Context, bid *models.Bid) error
-
-	UpdateAuction(ctx context.Context, auction *models.Auction) error
-
-	DeleteAuction(ctx context.Context, id uuid.UUID) error
+type Faculty interface {
+	GetFacultyByID(id uuid.UUID) (*models.Faculty, error)
+	ListFaculties() ([]*models.Faculty, error)
+	CreateFaculty(faculty *models.Faculty) error
+	UpdateFaculty(faculty *models.Faculty) error
+	DeleteFaculty(id uuid.UUID) error
 }
 
 type Media interface {
