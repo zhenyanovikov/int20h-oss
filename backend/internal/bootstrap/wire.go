@@ -22,6 +22,8 @@ func Up() (*Dependencies, error) {
 		wire.Bind(new(service.Media), new(*media.Service)),
 		wire.Bind(new(persistence.Auth), new(*postgres.Postgres)),
 		wire.Bind(new(persistence.User), new(*postgres.Postgres)),
+		wire.Bind(new(persistence.Faculty), new(*postgres.Postgres)),
+
 		//wire.Bind(new(persistence.Cache), new(*redis.Redis)),
 
 		config.New,

@@ -10,5 +10,5 @@ import (
 func (s *Service) GetUser(id uuid.UUID) (*models.User, error) {
 	ctx := context.Background()
 
-	return s.userRepo.GetByID(ctx, id)
+	return s.userRepo.GetUserByID(ctx, id)
 }

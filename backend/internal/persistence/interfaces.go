@@ -15,6 +15,14 @@ type Auth interface {
 }
 
 type User interface {
-	GetByID(ctx context.Context, id uuid.UUID) (*models.User, error)
-	UpsertOnEmail(ctx context.Context, user *models.User) error
+	GetUserByID(ctx context.Context, id uuid.UUID) (*models.User, error)
+	UpsertUserOnEmail(ctx context.Context, user *models.User) error
+}
+
+type Faculty interface {
+	ListFaculties(ctx context.Context) ([]*models.Faculty, error)
+	GetFacultyByID(ctx context.Context, facultyID uuid.UUID) (*models.Faculty, error)
+	CreateFaculty(ctx context.Context, faculty *models.Faculty) error
+	UpdateFaculty(ctx context.Context, faculty *models.Faculty) error
+	DeleteFaculty(ctx context.Context, facultyID uuid.UUID) error
 }
