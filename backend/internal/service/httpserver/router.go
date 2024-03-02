@@ -27,16 +27,14 @@ func (s *HTTPServer) newRouter(_ config.Config) *mux.Router {
 
 	api.HandleFunc("/status", s.getStatus).Methods(http.MethodGet, http.MethodOptions)
 	protected.HandleFunc("/profile/me", s.getMe).Methods(http.MethodGet, http.MethodOptions)
-	protected.HandleFunc("/profile/auctions", s.getMineAuctions).Methods(http.MethodGet, http.MethodOptions)
-	api.HandleFunc("/auctions", s.getAllAuction).Methods(http.MethodGet, http.MethodOptions)
-	protected.HandleFunc("/auctions", s.createAuction).Methods(http.MethodPost, http.MethodOptions)
-	api.HandleFunc("/auctions/{id}", s.getAuction).Methods(http.MethodGet, http.MethodOptions)
-	protected.HandleFunc("/auctions/{id}", s.updateAuction).Methods(http.MethodPut, http.MethodOptions)
-	protected.HandleFunc("/auctions/{id}", s.deleteAuction).Methods(http.MethodDelete, http.MethodOptions)
-	api.HandleFunc("/auctions/{id}/bid", s.getAuctionBids).Methods(http.MethodGet, http.MethodOptions)
-	protected.HandleFunc("/auctions/{id}/bid", s.placeAuctionBid).Methods(http.MethodPost, http.MethodOptions)
 
 	protected.HandleFunc("/media/upload", s.uploadMedia).Methods(http.MethodPost, http.MethodOptions)
+
+	protected.HandleFunc("/faculties/{faculty_id}", s.getFacultyByID).Methods(http.MethodGet, http.MethodOptions)
+	protected.HandleFunc("/faculties", s.listFaculties).Methods(http.MethodGet, http.MethodOptions)
+	protected.HandleFunc("/faculties", s.createFaculty).Methods(http.MethodPost, http.MethodOptions)
+	protected.HandleFunc("/faculties", s.updateFaculty).Methods(http.MethodPut, http.MethodOptions)
+	protected.HandleFunc("/faculties/{faculty_id}", s.deleteFaculty).Methods(http.MethodDelete, http.MethodOptions)
 
 	return router
 }
